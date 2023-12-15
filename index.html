@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN FORM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="content">
+        <form onsubmit="validate(); return false;">
+            <h1>CARL ADMIN</h1>
+            <div class="userbox">
+                <label for="username">Admin</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="userbox">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+                <span id="password-error" style="color: red;"></span>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        function validate() {
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;
+
+            // Check if both username and password are not empty
+            if (user.trim() === "" || pass.trim() === "") {
+                alert("Please enter both username and password");
+            } else {
+                if (pass.length < 6) {
+                    document.getElementById("password-error").innerText = "Password must be at least 6 characters";
+                } else {
+                    document.getElementById("password-error").innerText = "";
+                    if (user === "Admin" && pass === "admin12345") {
+                        alert("LOGIN successful");
+                        window.location.href = "main.html";
+                    } else {
+                        alert("Wrong Username or Password");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
